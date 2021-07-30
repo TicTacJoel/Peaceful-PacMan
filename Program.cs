@@ -61,7 +61,7 @@ namespace Breitensuche
             sLabyrinth = sLabyrinth.Remove(0, 4);
 
             // creating all rows seperatly
-            // im sure there is an easier, cleaner way, but I didn't find one
+            // im sure there is an easier, cleaner way, but I didn't find one YET
             string row1 = sLabyrinth.Remove(19);
             string row2 = sLabyrinth.Remove(38);
             row2 = row2.Remove(0, 19);
