@@ -2,7 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace Breitensuche
+namespace PeacefulPacMan
 {
     class Game : Form
     {
@@ -16,7 +16,7 @@ namespace Breitensuche
         {
             Width = 600;
             Height = 600;
-            Text = "Breitensuche - manuell";
+            Text = "Peaceful PacMan";
             FormBorderStyle = FormBorderStyle.FixedDialog;      // removes possibility to resize
             StartPosition = FormStartPosition.CenterScreen;     // starts window in center of the screen
             MaximizeBox = false;                                // removes the maximize Button
@@ -24,7 +24,7 @@ namespace Breitensuche
             if (!Console.IsInputRedirected)
             {
                 Console.WriteLine("This example requires that input be redirected from a file.");
-                Console.WriteLine("Please write:  4.Breitensuche < maze.dat");
+                Console.WriteLine("Please write:  Program < maze.dat");
                 return;
             }
 
@@ -135,8 +135,8 @@ namespace Breitensuche
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            RectangleF bounds = e.Graphics.VisibleClipBounds;       // um die Groesse des sichtbaren Bereichs zu ermitteln
-
+            RectangleF bounds = e.Graphics.VisibleClipBounds;       // to get the size of the visible area
+            
             int x = 0, y = 0;
 
             Rectangle rectangle = new Rectangle(x, y, 400, 310);
@@ -194,7 +194,7 @@ namespace Breitensuche
             }
         }
 
-        private void GoUp()
+        private void GoUp()     // moving up, if there is no wall
         {
             // if the new position is a point ".", then replace point "." with player "@",
             // and replace old player "@" on old position with emtpy space " "
@@ -223,7 +223,7 @@ namespace Breitensuche
             }
         }
 
-        private void GoDown()
+        private void GoDown()   // moving down, if there is no wall
         {
 
             if (this.LabirinthArray2D[this.yCoordinate + 1, this.xCoordinate] == ".")
@@ -248,7 +248,7 @@ namespace Breitensuche
             }
         }
 
-        private void GoRight()
+        private void GoRight()  // moving to the right, if there is no wall
         {
             if (this.LabirinthArray2D[this.yCoordinate, this.xCoordinate + 1] == ".")
             {
@@ -272,7 +272,7 @@ namespace Breitensuche
             }
         }
 
-        private void GoLeft()
+        private void GoLeft()   // moving to the left, if there is no wall
         {
             if (this.LabirinthArray2D[this.yCoordinate, this.xCoordinate - 1] == ".")
             {
